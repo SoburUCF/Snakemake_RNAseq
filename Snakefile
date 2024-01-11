@@ -1,7 +1,6 @@
 # Define the overall goal of the workflow:
 rule all:
-    # Specify the final outputs that the workflow should produce:
-    input:
+    input:  # Specify the final outputs that the workflow should produce:
         "pca.pdf",  # PCA plot
         "heatmap.pdf"  # Heatmap
 
