@@ -22,7 +22,7 @@ rule deseq2:
     # Inputs required for DESeq2 analysis:
     input:
         counts="data/Mov10_full_counts.txt",  # Raw count data
-        meta="meta/Mov10_full_meta.txt"  # Sample metadata
+        meta="data/Mov10_full_meta.txt"  # Sample metadata
     # Output file for the rlog-transformed data:
     output:
         rld="data/rld.Rds"  # Saved for reusability in other rules
