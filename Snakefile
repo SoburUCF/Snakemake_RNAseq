@@ -9,25 +9,13 @@ rule pca:
     # Inputs required for PCA:
     input:
         counts="data/Mov10_full_counts.txt",  # Raw count data
-        meta="meta/Mov10_full_meta.txt"  # Sample metadata
+        meta="data/Mov10_full_meta.txt"  # Sample metadata
     # Output file for the PCA plot:
     output:
         "pca.pdf"
     # R script containing the PCA code:
     script:
         "scripts/pca.R"
-
-# Rule for generating the heatmap:
-rule heatmap:
-    # Input file containing rlog-transformed data:
-    input:
-        rld="data/rld.Rds"  # Saved from the DESeq2 rule
-    # Output file for the heatmap:
-    output:
-        "heatmap.pdf"
-    # R script containing the heatmap code:
-    script:
-        "scripts/heatmap.R"
 
 # Rule for performing DESeq2 analysis and generating rlog-transformed data:
 rule deseq2:
@@ -41,3 +29,15 @@ rule deseq2:
     # R script containing the DESeq2 code:
     script:
         "scripts/deseq2.R"
+
+# Rule for generating the heatmap:
+rule heatmap:
+    # Input file containing rlog-transformed data:
+    input:
+        rld="data/rld.Rds"  # Saved from the DESeq2 rule
+    # Output file for the heatmap:
+    output:
+        "heatmap.pdf"
+    # R script containing the heatmap code:
+    script:
+        "scripts/heatmap.R"
